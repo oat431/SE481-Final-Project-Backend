@@ -5,4 +5,6 @@ import se481.project.transmatter.security.entity.User;
 
 public interface UserRepository extends JpaRepository<User, Long> {
     User findByUsername(String username);
+
+    User findByEmail(String testEmail);
 }

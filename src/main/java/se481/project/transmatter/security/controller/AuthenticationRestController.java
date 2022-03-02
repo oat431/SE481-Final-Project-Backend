@@ -12,8 +12,10 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.web.bind.annotation.*;
 import se481.project.transmatter.security.JwtTokenUtil;
 import se481.project.transmatter.security.entity.JwtUser;
+import se481.project.transmatter.security.entity.User;
 import se481.project.transmatter.security.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
+import se481.project.transmatter.util.TransMatterMapper;
 
 
 import javax.servlet.http.HttpServletRequest;
@@ -53,8 +55,12 @@ public class AuthenticationRestController {
         // Reload password post-security so we can generate token
         final UserDetails userDetails = userDetailsService.loadUserByUsername(authenticationRequest.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails, device);
+        User user = userRepository.findByUsername(authenticationRequest.getUsername());
         Map result = new HashMap();
         result.put("token", token);
+        if(user!=null){
+            result.put("user",TransMatterMapper.INSTANCE.getUserDTO(user));
+        }
         return ResponseEntity.ok(result);
     }
 
