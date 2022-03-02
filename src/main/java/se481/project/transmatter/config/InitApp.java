@@ -28,10 +28,22 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         Authority authUser = Authority.builder().name(AuthorityName.ROLE_USER).build();
         User pun,oat;
         PasswordEncoder p = new BCryptPasswordEncoder();
-        pun = User.builder().email("pun@gmail.com").firstname("thitisan").username("kp")
-                .enabled(true).password(p.encode("123456789")).lastname("chailuek").build();
-        oat = User.builder().email("oat@gmail.com").firstname("sahachan").username("oat")
-                .enabled(true).password(p.encode("123456789")).lastname("tippimwong").build();
+        pun = User.builder()
+                .email("pun@gmail.com")
+                .firstname("thitisan")
+                .username("kp")
+                .enabled(true)
+                .password(p.encode("123456789"))
+                .lastname("chailuek")
+                .build();
+        oat = User.builder()
+                .email("oat@gmail.com")
+                .firstname("sahachan")
+                .username("oat")
+                .enabled(true)
+                .password(p.encode("123456789"))
+                .lastname("tippimwong")
+                .build();
 
         authorityRepository.save(authUser);
         pun.getAuthorities().add(authUser);

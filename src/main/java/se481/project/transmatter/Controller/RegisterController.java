@@ -1,6 +1,8 @@
 package se481.project.transmatter.Controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -37,8 +39,15 @@ public class RegisterController {
             User u = userRepository.save(user);
             return ResponseEntity.ok(TransMatterMapper.INSTANCE.getUserDTO(u));
         }
+        // should be bad request
+
         Map<String,String> error = new HashMap<>();
-        error.put("username","username or email have been taken, please fill the form again");
-        return ResponseEntity.ok(error);
+        error.put("message","username or email have been taken, please fill the form again");
+        HttpHeaders responseHeader = new HttpHeaders();
+        return new ResponseEntity<>(
+                error,
+                responseHeader,
+                HttpStatus.BAD_REQUEST
+        );
     }
 }
