@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import se481.project.transmatter.tmuser.entity.TmUser;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -56,6 +57,9 @@ public class User {
     @Temporal(TemporalType.TIMESTAMP)
     @NotNull
     private Date lastPasswordResetDate;
+
+    @OneToOne
+    private TmUser account;
 
 	@Builder.Default
     @ManyToMany(fetch = FetchType.EAGER)

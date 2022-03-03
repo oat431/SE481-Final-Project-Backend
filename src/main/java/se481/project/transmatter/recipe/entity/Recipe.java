@@ -1,6 +1,7 @@
 package se481.project.transmatter.recipe.entity;
 
 import lombok.*;
+import se481.project.transmatter.tmuser.entity.TmUser;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -25,5 +26,8 @@ public class Recipe {
 
     @OneToMany(mappedBy = "foodInstruction")
     List<Instruction> instructions = new ArrayList<>();
+
+    @ManyToOne
+    TmUser markBy;
 
 }
