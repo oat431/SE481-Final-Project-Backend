@@ -19,7 +19,7 @@ public class TmUser {
     @EqualsAndHashCode.Exclude
     Long id;
 
-    @OneToOne(mappedBy = "account")
+    @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
     User user;
 
     @ManyToMany(mappedBy = "markBy")

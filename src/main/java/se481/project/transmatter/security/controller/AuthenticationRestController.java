@@ -21,10 +21,13 @@ import se481.project.transmatter.security.entity.User;
 import se481.project.transmatter.security.repository.AuthorityRepository;
 import se481.project.transmatter.security.repository.UserRepository;
 import org.springframework.security.authentication.AuthenticationManager;
+import se481.project.transmatter.tmuser.entity.TmUser;
+import se481.project.transmatter.tmuser.repository.TmUserRepository;
 import se481.project.transmatter.util.TransMatterMapper;
 
 
 import javax.servlet.http.HttpServletRequest;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -43,11 +46,15 @@ public class AuthenticationRestController {
 
     @Autowired
     private UserDetailsService userDetailsService;
+
     @Autowired
     UserRepository userRepository;
 
     @Autowired
     AuthorityRepository authorityRepository;
+
+    @Autowired
+    TmUserRepository tmUserRepository;
 
     PasswordEncoder encoder = new BCryptPasswordEncoder();
 
@@ -97,13 +104,25 @@ public class AuthenticationRestController {
         if(userRepository.findByUsername(testName)==null && userRepository.findByEmail(testEmail)==null){
             Authority authUser = authorityRepository.getById(1L);
             String password = encoder.encode(user.getPassword());
+
             user.setPassword(password);
+            user.setFirstname(user.getFirstname());
+            user.setLastname(user.getLastname());
             user.setEnabled(true);
             user.getAuthorities().add(authUser);
+
+            TmUser tmUser = TmUser.builder()
+                                .user(user)
+                                .mark(new ArrayList<>())
+                                .build();
+
+            tmUserRepository.save(tmUser);
+
+            user.setAccount(tmUser);
+
             User u = userRepository.save(user);
             return ResponseEntity.ok(TransMatterMapper.INSTANCE.getUserDTO(u));
         }
-        // should be bad request
 
         Map<String,String> error = new HashMap<>();
         error.put("message","username or email have been taken, please fill the form again");

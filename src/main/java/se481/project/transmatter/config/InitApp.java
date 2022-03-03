@@ -79,8 +79,6 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         authorityRepository.save(authUser);
         pun.getAuthorities().add(authUser);
         oat.getAuthorities().add(authUser);
-        userRepository.save(pun);
-        userRepository.save(oat);
 
         oat431 = TmUser.builder()
                 .user(oat)
@@ -94,6 +92,13 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
         tmUserRepository.save(oat431);
         tmUserRepository.save(pun561);
+
+        oat.setAccount(oat431);
+        pun.setAccount(pun561);
+
+        userRepository.save(pun);
+        userRepository.save(oat);
+
     }
 
     Recipe recipe1;
@@ -104,6 +109,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .image("miso-butter-roast-chicken-acorn-squash-panzanella")
                 .ingredients(new ArrayList<>())
                 .instructions(new ArrayList<>())
+                .markBy(new ArrayList<>())
                 .build();
 
         recipe1.getIngredients().add(
@@ -111,6 +117,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         Ingredient.builder()
                                 .name("whole Chicken")
                                 .amount(1.5)
+                                .foodIngredient(recipe1)
                                 .build()
                 )
         );
@@ -120,6 +127,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         Ingredient.builder()
                                 .name("small acorn squash")
                                 .amount(2.0)
+                                .foodIngredient(recipe1)
                                 .build()
                 )
         );
@@ -129,6 +137,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         Ingredient.builder()
                                 .name("Small red Onion")
                                 .amount(3.0)
+                                .foodIngredient(recipe1)
                                 .build()
                 )
         );
@@ -141,6 +150,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                                 " salt, and tie legs together with kitchen twine\n" +
                                                 " Let sit at room temperature 1 hour"
                                 )
+                                .foodInstruction(recipe1)
                                 .build()
                 )
         );
@@ -151,6 +161,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                 .step(
                                         "Using your fingers, mash flour and butter in a small bowl to combine"
                                 )
+                                .foodInstruction(recipe1)
                                 .build()
                 )
         );
@@ -161,6 +172,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                 .step(
                                         "Serve chicken with gravy and squash panzanella alongside"
                                 )
+                                .foodInstruction(recipe1)
                                 .build()
                 )
         );
@@ -173,6 +185,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                 .image("crock-pot-ribs")
                 .ingredients(new ArrayList<>())
                 .instructions(new ArrayList<>())
+                .markBy(new ArrayList<>())
                 .build();
 
         recipe2.getIngredients().add(
@@ -180,6 +193,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         Ingredient.builder()
                                 .name("country style pork ribs")
                                 .amount(1.0)
+                                .foodIngredient(recipe2)
                                 .build()
                 )
         );
@@ -189,6 +203,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         Ingredient.builder()
                                 .name("teaspoon salt")
                                 .amount(1.0)
+                                .foodIngredient(recipe2)
                                 .build()
                 )
         );
@@ -198,6 +213,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                         Ingredient.builder()
                                 .name("cup bbq sauce plus additional for serving")
                                 .amount(1.0)
+                                .foodIngredient(recipe2)
                                 .build()
                 )
         );
@@ -209,6 +225,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                         "Combine sage, rosemary, and 6 Tbsp\n" +
                                                 " melted butter in a large bowl; pour half of mixture over squash on baking sheet"
                                 )
+                                .foodInstruction(recipe2)
                                 .build()
                 )
         );
@@ -220,6 +237,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                         "salt to remaining herb butter in bowl; season with black pepper and toss to combine\n" +
                                                 " Set aside"
                                 )
+                                .foodInstruction(recipe2)
                                 .build()
                 )
         );
@@ -231,6 +249,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
                                         "Place onion and vinegar in a small bowl; season with salt and toss to coat\n" +
                                                 " Let sit, tossing occasionally, until ready to serve"
                                 )
+                                .foodInstruction(recipe2)
                                 .build()
                 )
         );
@@ -238,12 +257,21 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
     }
 
     private void addMark(){
-        oat431.getMark().add(recipe1);
-        oat431.getMark().add(recipe1);
-        pun561.getMark().add(recipe1);
-        pun561.getMark().add(recipe2);
-        tmUserRepository.save(oat431);
-        tmUserRepository.save(pun561);
+//        oat431.getMark().add(recipe1);
+//        oat431.getMark().add(recipe1);
+//        pun561.getMark().add(recipe1);
+//        pun561.getMark().add(recipe2);
+//
+        recipe1.getMarkBy().add(oat431);
+        recipe1.getMarkBy().add(pun561);
+        recipe2.getMarkBy().add(oat431);
+        recipe2.getMarkBy().add(pun561);
+
+        recipeRepository.save(recipe1);
+        recipeRepository.save(recipe2);
+
+//        tmUserRepository.save(oat431);
+//        tmUserRepository.save(pun561);
     }
 
 
