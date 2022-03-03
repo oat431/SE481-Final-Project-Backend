@@ -22,12 +22,12 @@ public class Recipe {
     String image;
 
     @OneToMany(mappedBy = "foodIngredient")
-    List<Ingredient> ingredients = new ArrayList<>();
+    List<Ingredient> ingredients;
 
     @OneToMany(mappedBy = "foodInstruction")
-    List<Instruction> instructions = new ArrayList<>();
+    List<Instruction> instructions;
 
-    @ManyToOne
-    TmUser markBy;
+    @ManyToMany
+    List<TmUser> markBy;
 
 }

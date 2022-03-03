@@ -5,6 +5,7 @@ import se481.project.transmatter.recipe.entity.Recipe;
 import se481.project.transmatter.security.entity.User;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -21,7 +22,7 @@ public class TmUser {
     @OneToOne(mappedBy = "account")
     User user;
 
-    @OneToMany(mappedBy = "markBy")
+    @ManyToMany(mappedBy = "markBy")
     List<Recipe> mark;
 
 }
