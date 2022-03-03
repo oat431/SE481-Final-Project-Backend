@@ -1,4 +1,4 @@
-package se481.project.transmatter.DTO;
+package se481.project.transmatter.recipe.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -9,9 +9,7 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDTO {
-    String email;
-    String username;
-    String firstname;
-    String lastname;
+public class IngredientDto {
+    String name;
+    Double amount;
 }
