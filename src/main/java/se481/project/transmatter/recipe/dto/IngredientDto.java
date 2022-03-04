@@ -11,5 +11,4 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class IngredientDto {
     String name;
-    Double amount;
 }

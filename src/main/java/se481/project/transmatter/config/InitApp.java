@@ -115,8 +115,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         recipe1.getIngredients().add(
                 ingredientRepository.save(
                         Ingredient.builder()
-                                .name("whole Chicken")
-                                .amount(1.5)
+                                .name("1.5 whole Chicken")
                                 .foodIngredient(recipe1)
                                 .build()
                 )
@@ -125,8 +124,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         recipe1.getIngredients().add(
                 ingredientRepository.save(
                         Ingredient.builder()
-                                .name("small acorn squash")
-                                .amount(2.0)
+                                .name("2.0 small acorn squash")
                                 .foodIngredient(recipe1)
                                 .build()
                 )
@@ -135,8 +133,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         recipe1.getIngredients().add(
                 ingredientRepository.save(
                         Ingredient.builder()
-                                .name("Small red Onion")
-                                .amount(3.0)
+                                .name("3.0 Small red Onion")
                                 .foodIngredient(recipe1)
                                 .build()
                 )
@@ -191,8 +188,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         recipe2.getIngredients().add(
                 ingredientRepository.save(
                         Ingredient.builder()
-                                .name("country style pork ribs")
-                                .amount(1.0)
+                                .name("1.0 country style pork ribs")
                                 .foodIngredient(recipe2)
                                 .build()
                 )
@@ -201,8 +197,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         recipe2.getIngredients().add(
                 ingredientRepository.save(
                         Ingredient.builder()
-                                .name("teaspoon salt")
-                                .amount(1.0)
+                                .name("1.0 teaspoon salt")
                                 .foodIngredient(recipe2)
                                 .build()
                 )
@@ -211,8 +206,7 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
         recipe2.getIngredients().add(
                 ingredientRepository.save(
                         Ingredient.builder()
-                                .name("cup bbq sauce plus additional for serving")
-                                .amount(1.0)
+                                .name("1.0 cup bbq sauce plus additional for serving")
                                 .foodIngredient(recipe2)
                                 .build()
                 )

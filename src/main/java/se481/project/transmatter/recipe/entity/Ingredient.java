@@ -18,7 +18,6 @@ public class Ingredient {
     Long id;
 
     String name;
-    Double amount;
 
     @ManyToOne
     Recipe foodIngredient;
