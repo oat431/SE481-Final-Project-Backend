@@ -6,4 +6,5 @@ import se481.project.transmatter.tmuser.entity.TmUser;
 public interface TmUserService {
     TmUser markRecipe(TmUser user, Recipe recipe);
     TmUser unMarkRecipe(TmUser user, Recipe recipe);
+    TmUser getUser(Long id);
 }

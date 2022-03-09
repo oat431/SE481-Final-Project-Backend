@@ -20,4 +20,9 @@ public class TmUserDaoImpl implements TmUserDao{
     public TmUser unMarkRecipe(TmUser user) {
         return tmUserRepository.save(user);
     }
+
+    @Override
+    public TmUser getUser(Long id) {
+        return tmUserRepository.getById(id);
+    }
 }
