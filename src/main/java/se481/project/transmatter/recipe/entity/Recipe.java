@@ -19,13 +19,13 @@ public class Recipe {
     Long id;
 
     String title;
-    String image;
-
-    @OneToMany(mappedBy = "foodIngredient")
-    List<Ingredient> ingredients;
-
-    @OneToMany(mappedBy = "foodInstruction")
-    List<Instruction> instructions;
+//    String image;
+//
+//    @OneToMany(mappedBy = "foodIngredient")
+//    List<Ingredient> ingredients;
+//
+//    @OneToMany(mappedBy = "foodInstruction")
+//    List<Instruction> instructions;
 
     @ManyToMany
     List<TmUser> markBy;
