@@ -104,9 +104,10 @@ public class InitApp implements ApplicationListener<ApplicationReadyEvent> {
 
     private void addMark(){
         for(Recipe i : recipes){
-            i.getMarkBy().add(oat431);
-            i.getMarkBy().add(pun561);
-            recipeRepository.save(i);
+            oat431.getMark().add(i);
+            pun561.getMark().add(i);
+            tmUserRepository.save(oat431);
+            tmUserRepository.save(pun561);
         }
     }
 

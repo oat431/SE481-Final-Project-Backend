@@ -27,7 +27,7 @@ public class Recipe {
 //    @OneToMany(mappedBy = "foodInstruction")
 //    List<Instruction> instructions;
 
-    @ManyToMany
+    @ManyToMany(mappedBy = "mark")
     List<TmUser> markBy;
 
 }

@@ -12,6 +12,8 @@ public class TmUserController {
         return null;
     }
 
+    @PostMapping("/unmark/{recipeID}")
+
     @GetMapping("/user/{userID}")
     public ResponseEntity<?> getUserData(){
         return null;

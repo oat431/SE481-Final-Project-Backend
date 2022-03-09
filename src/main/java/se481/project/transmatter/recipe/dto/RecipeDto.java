@@ -12,9 +12,9 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class RecipeDto {
-    Long id;
+//    Long id;
     String title;
-    String image;
-    List<IngredientDto> ingredients;
-    List<InstructionDto> instructions;
+//    String image;
+//    List<IngredientDto> ingredients;
+//    List<InstructionDto> instructions;
 }

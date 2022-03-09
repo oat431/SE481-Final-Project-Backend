@@ -22,7 +22,7 @@ public class TmUser {
     @OneToOne(mappedBy = "account",cascade = CascadeType.ALL)
     User user;
 
-    @ManyToMany(mappedBy = "markBy")
+    @ManyToMany
     List<Recipe> mark;
 
 }
