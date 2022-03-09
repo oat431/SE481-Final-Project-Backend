@@ -1,4 +1,4 @@
-package se481.project.transmatter.DTO;
+package se481.project.transmatter.security.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
